@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Head from "../components/Head";
 import Footer from "../components/Footer";
-import { Account, FoundMusic, Friend, MyMusic } from "../views";
-import { Privatefm, EverydaySong, Hotsong } from "../components";
+import {
+  Account,
+  FoundMusic,
+  Friend,
+  MyMusic,
+  Register,
+  Login,
+} from "../views";
+// import { Privatefm, EverydaySong, Hotsong } from "../components";
 export class App extends Component {
   render() {
     return (
@@ -15,6 +22,8 @@ export class App extends Component {
           <Route path='/mymusic' component={MyMusic} />
           <Route path='/friend' component={Friend} />
           <Route path='/account' component={Account} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
         </Switch>
         <Footer />
       </div>

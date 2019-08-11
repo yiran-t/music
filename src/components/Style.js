@@ -4,6 +4,8 @@ import { req } from "../Api/req";
 import { Carousel } from "antd-mobile";
 import styled from "styled-components";
 import RecommendSongList from "./RecommendSongList";
+import Dujia from "./Dujia";
+import RecommendMV from "./RecommendMV";
 
 // import Privatefm from "./Privatefm";
 // import EverydaySong from "./EverydaySong";
@@ -53,7 +55,7 @@ export default class Style extends Component {
     req("/banner").then(res => {
       let result = res.data.banners;
       this.setState({ banners: result });
-      console.log(result);
+      // console.log(result);
     });
     setTimeout(() => {
       this.setState({
@@ -86,7 +88,6 @@ export default class Style extends Component {
           ))}
         </Carousel>
         {/* 轮播end */}
-
         {/* 私人FM */}
         <ul className='privateUl'>
           <Link to='/foundmusics/private'>
@@ -102,7 +103,12 @@ export default class Style extends Component {
             云音乐热歌榜
           </Link>
         </ul>
+        {/* 推荐歌单 */}
         <RecommendSongList />
+        {/* 独家放送 */}
+        <Dujia />
+        {/*  推荐MV*/}
+        <RecommendMV />
       </Styles>
     );
   }
