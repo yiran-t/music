@@ -5,7 +5,6 @@ export default class Privatefm extends Component {
     return (
       <div>
         <h2>Private FM</h2>
-        
       </div>
     );
   }

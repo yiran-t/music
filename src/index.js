@@ -5,10 +5,12 @@ import "./index.css";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import App from "./layouts/App";
+import Private from "./layouts/Private";
 ReactDOM.render(
   <HashRouter>
     <Switch>
-      <Route path={"/"} component={App} />
+      <Route path='/foundmusics' component={Private} />
+      <Route path='/' component={App} />
     </Switch>
   </HashRouter>,
   document.getElementById("root")

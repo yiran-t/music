@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { NavLink, HashRouter, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { req } from "../Api/req";
 import { Carousel } from "antd-mobile";
 import styled from "styled-components";
-import { Privatefm, EverydaySong, Hotsong } from "../components";
+import RecommendSongList from "./RecommendSongList";
+
+// import Privatefm from "./Privatefm";
+// import EverydaySong from "./EverydaySong";
+// import Hotsong from "./Hotsong";
 
 const Styles = styled.div`
   .privateUl {
@@ -84,25 +88,21 @@ export default class Style extends Component {
         {/* 轮播end */}
 
         {/* 私人FM */}
-        <HashRouter>
-          <ul className='privateUl'>
-            <NavLink to='/private'>
-              <i className='fa fa-music' />
-              私人 FM
-            </NavLink>
-            <NavLink to='everydaySong'>
-              <i className='fa fa-music' />
-              每日歌曲推荐
-            </NavLink>
-            <NavLink to='hotSong'>
-              <i className='fa fa-music' />
-              云音乐热歌榜
-            </NavLink>
-          </ul>
-          <Route pathname='private' component={Privatefm} />
-          <Route pathname='everydaySong' component={EverydaySong} />
-          <Route pathname='hotSong' component={Hotsong} />
-        </HashRouter>
+        <ul className='privateUl'>
+          <Link to='/foundmusics/private'>
+            <i className='fa fa-music' />
+            私人 FM
+          </Link>
+          <Link to='/foundmusics/everydaySong'>
+            <i className='fa fa-music' />
+            每日歌曲推荐
+          </Link>
+          <Link to='/foundmusics/hotSong'>
+            <i className='fa fa-music' />
+            云音乐热歌榜
+          </Link>
+        </ul>
+        <RecommendSongList />
       </Styles>
     );
   }

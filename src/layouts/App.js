@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Head from "../components/Head";
 import Footer from "../components/Footer";
 import { Account, FoundMusic, Friend, MyMusic } from "../views";
+import { Privatefm, EverydaySong, Hotsong } from "../components";
 export class App extends Component {
   render() {
     return (
