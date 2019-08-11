@@ -10,6 +10,7 @@ const tabs = [
 
 const TabExample = () => (
   <div>
+    {/* 个性推荐 */}
     <WhiteSpace />
     <Tabs
       tabs={tabs}
@@ -24,6 +25,7 @@ const TabExample = () => (
       <Rank />
     </Tabs>
     <WhiteSpace />
+    {/* 个性推荐  end*/}
   </div>
 );
 

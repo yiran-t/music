@@ -1,10 +1,44 @@
 import React, { Component } from "react";
+import { NavLink, HashRouter, Route } from "react-router-dom";
 import { req } from "../Api/req";
 import { Carousel } from "antd-mobile";
+import styled from "styled-components";
+import { Privatefm, EverydaySong, Hotsong } from "../components";
+
+const Styles = styled.div`
+  .privateUl {
+    width: 100%;
+    height: 1.12rem;
+    /* background: pink; */
+    display: flex;
+  }
+  .privateUl a {
+    display: flex;
+    flex-direction: column;
+    width: 33.3%;
+    height: 0.8rem;
+    /* background: skyblue; */
+    margin: 0.16rem 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .privateUl a i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: skyblue;
+    font-size: 0.16rem;
+    line-height: 0.5rem;
+    display: flex;
+    justify-content: center;
+    color: salmon;
+    margin-bottom: 0.04rem;
+  }
+`;
 export default class Style extends Component {
   state = {
     banners: [],
-    data: ["1", "2", "3",4,5,6,7,8],
+    data: ["1", "2", "3", "4", "5", "6", "7", "8"],
     imgHeight: 176,
   };
   //   async componentDidMount() {
@@ -23,32 +57,53 @@ export default class Style extends Component {
       });
     }, 100);
   }
+
   render() {
     return (
-      <div>
-          <Carousel
-            autoplay={true}
-            infinite
-          >
-            {this.state.data.map((item, index) => (
-              <a 
-                key={index}
-                href='##'
-                style={{
-                  display: "inline-block",
-                  width: "100%",
-                  height: this.state.imgHeight,
-                }}
-              >
-                <img
-                  src={item.imageUrl}
-                  alt=' '
-                  style={{ width: "100%", verticalAlign: "top" ,height:'100%'}}
-                />
-              </a>
-            ))}
-          </Carousel>
-      </div>
+      <Styles>
+        {/* 轮播 */}
+        <Carousel autoplay={true} infinite>
+          {this.state.data.map((item, index) => (
+            <a
+              key={index}
+              href='##'
+              style={{
+                display: "inline-block",
+                width: "100%",
+                height: this.state.imgHeight,
+              }}
+            >
+              <img
+                src={item.imageUrl}
+                alt=' '
+                style={{ width: "100%", verticalAlign: "top", height: "100%" }}
+              />
+            </a>
+          ))}
+        </Carousel>
+        {/* 轮播end */}
+
+        {/* 私人FM */}
+        <HashRouter>
+          <ul className='privateUl'>
+            <NavLink to='/private'>
+              <i className='fa fa-music' />
+              私人 FM
+            </NavLink>
+            <NavLink to='everydaySong'>
+              <i className='fa fa-music' />
+              每日歌曲推荐
+            </NavLink>
+            <NavLink to='hotSong'>
+              <i className='fa fa-music' />
+              云音乐热歌榜
+            </NavLink>
+          </ul>
+          <Route pathname='private' component={Privatefm} />
+          <Route pathname='everydaySong' component={EverydaySong} />
+          <Route pathname='hotSong' component={Hotsong} />
+        </HashRouter>
+      </Styles>
     );
   }
 }
