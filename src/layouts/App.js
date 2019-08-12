@@ -9,6 +9,8 @@ import {
   MyMusic,
   Register,
   Login,
+  LoginPhone,
+  Register2,
 } from "../views";
 // import { Privatefm, EverydaySong, Hotsong } from "../components";
 export class App extends Component {
@@ -22,8 +24,10 @@ export class App extends Component {
           <Route path='/mymusic' component={MyMusic} />
           <Route path='/friend' component={Friend} />
           <Route path='/account' component={Account} />
-          <Route path='/register' component={Register} />
+          <Route path='/register1' component={Register} />
           <Route path='/login' component={Login} />
+          <Route path='/loginPhone' component={LoginPhone} />
+          <Route path='/register2' component={Register2} />
         </Switch>
         <Footer />
       </div>

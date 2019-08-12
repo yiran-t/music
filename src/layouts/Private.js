@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Privatefm, EverydaySong, Hotsong } from "../components";
-import { FoundMusic } from "../views";
+
 export class Private extends Component {
   render() {
     return (
