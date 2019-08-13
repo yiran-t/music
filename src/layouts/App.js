@@ -20,7 +20,7 @@ export class App extends Component {
         <Head />
         <Switch>
           <Route path='/foundmusic' component={FoundMusic} />
-          <Redirect exact path='/' to='/foundmusic' />
+          {/* <Redirect exact path='/' to='/foundmusic' /> */}
           <Route path='/mymusic' component={MyMusic} />
           <Route path='/friend' component={Friend} />
           <Route path='/account' component={Account} />
@@ -28,6 +28,7 @@ export class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/loginPhone' component={LoginPhone} />
           <Route path='/register2' component={Register2} />
+          <Route component={FoundMusic} />
         </Switch>
         <Footer />
       </div>

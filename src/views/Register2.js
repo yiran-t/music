@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "antd-mobile";
-import { req } from "../Api/req";
+// import { req } from "../Api/req";
 import styled from "styled-components";
 
 const Re = styled.div`
