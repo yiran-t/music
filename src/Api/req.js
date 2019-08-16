@@ -1,8 +1,8 @@
 import axios from "axios";
-const URL = "https://net-music.penkuoer.com";
+// const URL = "https://net-music.penkuoer.com";
 export const req = (url, data) => {
   return axios({
-    url: URL + url,
+    url: "https://net-music.penkuoer.com" + url,
     method: data ? "POST" : "GET",
     data,
   });

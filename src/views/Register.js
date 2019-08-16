@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+// import { withRouter } from "react-router-dom";
 import { req } from "../Api/req";
 import styled from "styled-components";
 import { Button } from "antd-mobile";
+import PropsTypes from "prop-types";
 import { connect } from "react-redux";
+import store from "../redux/store";
 
 const Reg = styled.div`
   input {
@@ -13,46 +16,48 @@ const Reg = styled.div`
 class Register extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    // const { tel, telAction } = props;
     this.state = {
       phone: "",
-      // yzm: "",
       password: "",
-      // nickname: "",
     };
   }
-  // registBtn() {
-  //   req("/captcha/sent", {
-  //     // captcha: this.state.yzm,
-  //     phone: this.state.phone,
-  //     // password: this.state.password,
-  //     // nickname: this.state.nickname,
-  //   }).then(res => {
-  //     console.log(res);
-  //     console.log(11);
-  //     // 手机号、密码  格式输入正确，传参phone   接收验证码
-  //     // this.$router.push({ pathname: "/register2" });
-  //     // this.props.history.push({ pathname: "/register2" });
-  //   });
-  // }
+  regBtn() {
+    console.log(this.state.phone);
+    console.log(this.state.password);
+    req("/captcha/sent?phone=" + this.state.phone)
+      .then(res => {
+        console.log(res);
+        this.props.history.push({
+          pathname: "/register2",
+          search: `${"phone=" +
+            this.state.phone +
+            "&password=" +
+            this.state.password}`,
+        });
+        //dispatch
+        // store.dispatch({
+        //   type: "USER_INFO",
+        //   payload: {
+        //     tel: this.state.phone,
+        //     pwd: this.state.password,
+        //   },
+        // });
+      })
+      .catch(err => err);
+  }
+  // 取多个ipt的值
   onInputChange(e) {
-    // ES6中变量名是一个变量
-    // let _this = this;
     let inputValue = e.target.value,
       inputName = e.target.name;
-    this.setState(
-      {
-        [inputName]: inputValue,
-      },
-      function() {
-        // console.log(e);
-        console.log(this.state.phone);
-        // console.log(this.state.yzm);
-      }
-    );
+    this.setState({
+      [inputName]: inputValue,
+    });
   }
   render() {
-    let { yiran, add } = this.props;
-    // const { getFieldProps } = this.props.form;
+    const { tels, dispatch } = this.props;
+    // const { pwds, dispatch } = this.props;
     return (
       <Reg>
         <div>
@@ -62,51 +67,43 @@ class Register extends Component {
             placeholder='手机号'
             onKeyUp={e => this.onInputChange(e)}
           />
-          {/* <input
-            type='text'
-            name='yzm'
-            placeholder='验证码'
-            onKeyUp={e => this.onInputChange(e)}
-          /> */}
+
           <input
             type='password'
             name='password'
             placeholder='密码'
             onKeyUp={e => this.onInputChange(e)}
           />
-          {/* <input
-            type='text'
-            name='nickname'
-            placeholder='昵称'
-            onKeyUp={e => this.onInputChange(e)}
-          /> */}
-          <Button onClick={() => this.registBtn} type='primary'>
-            下一步
+          <Button onClick={() => this.regBtn()} type='primary'>
+            下一步1
           </Button>
-          <Button style={{ width: "50%" }} type='primary'>
-            加
-          </Button>
-          {yiran}
-          <Button style={{ width: "50%" }} type='primary' onClick={add}>
-            减
-          </Button>
+          <h4>当前取到的值为:{tels}</h4>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "USER_INFO",
+                payload: { tels: this.state.phone },
+              })
+            }
+          >
+            vuex取值测试
+          </button>
         </div>
       </Reg>
     );
   }
 }
-// 获取state中的数据
+// 获取store中的state数据
 let mapStateToProps = state => {
-  return { yiran: state.age };
+  return state;
 };
-// 修改state中的数据    发送数据--》reducers去修改数据--》state数据更新
-let mapDispatchToProps = dispatch => ({
-  add: () => {
-    dispatch({ type: "changeAge", data: [{ phone: "123" }] });
-  },
-});
-const aaa = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register);
-export default aaa;
+// 修改state中的数据    发送数据 -->  reducers去修改数据 -->  state数据更新
+// let mapDispatchToProps = dispatch => ({
+//   add: () => {
+//     dispatch({ type: "USER_INFO", payload: [{ phone: "123" }] });
+//   },
+// });
+
+// export default withRouter(Register);
+// export default connect(mapStateToProps)(Register);
+export default connect(state => state)(Register);

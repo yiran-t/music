@@ -8,6 +8,8 @@ import App from "./layouts/App";
 import Private from "./layouts/Private";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+
+//
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>

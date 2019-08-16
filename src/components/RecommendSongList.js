@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { req } from "../Api/req.js";
 import styled from "styled-components";
 const Recommend = styled.div`
@@ -12,7 +13,7 @@ const Recommend = styled.div`
     flex-wrap: wrap;
     text-align: center;
   }
-  .recommendList span {
+  .recommendList a {
     width: 33.3%;
     height: 1.4rem;
   }
@@ -54,10 +55,13 @@ export default class RecommendSongList extends Component {
         <div className='recommendList'>
           {_this.state.arr.map((item, i) => {
             return (
-              <span key={i}>
+              <Link
+                to={{ path: "./songListDetail", query: { id: "item.id" } }}
+                key={i}
+              >
                 <img src={item.picUrl} alt='1' />
                 <p>{item.name}</p>
-              </span>
+              </Link>
             );
           })}
         </div>

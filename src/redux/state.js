@@ -1,6 +1,7 @@
 let state = {
-  name: "11",
-  age: [1],
-  obj: {},
+  tel: "",
+  pwd: "",
+  nickname: "",
+  userFlag: false,
 };
 export default state;

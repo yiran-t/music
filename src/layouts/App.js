@@ -11,8 +11,10 @@ import {
   Login,
   LoginPhone,
   Register2,
+  Register3,
 } from "../views";
 // import { Privatefm, EverydaySong, Hotsong } from "../components";
+import RecommendSongListDetail from "../components/recommendSongListDetail";
 export class App extends Component {
   render() {
     return (
@@ -27,7 +29,10 @@ export class App extends Component {
           <Route path='/register1' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/loginPhone' component={LoginPhone} />
+          <Route path='/register1' component={Register} />
           <Route path='/register2' component={Register2} />
+          <Route path='/register3' component={Register3} />
+          <Route path='/songListDetail' component={RecommendSongListDetail} />
           <Route component={FoundMusic} />
         </Switch>
         <Footer />

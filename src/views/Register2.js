@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "antd-mobile";
-// import { req } from "../Api/req";
+import { req } from "../Api/req";
 import styled from "styled-components";
 
 const Re = styled.div`
@@ -21,12 +21,37 @@ export default class Register2 extends Component {
       valueYzm: e.target.value,
     });
   }
+  // const _this = this;
 
-  //   holderNextStep() {
-  //     req("", {}).then(res => {
-  //       console.log(res);
-  //     });
-  //   }
+  holderNextStep() {
+    // console.log(this.props);
+    // console.log(this.props.location.search);
+    const ph = this.props.location.search.split("=")[1].split("&")[0];
+    const pwd = this.props.location.search.split("=")[2];
+    console.log(ph);
+    console.log(pwd);
+    console.log(this.state.valueYzm);
+    this.props.history.push({
+      pathname: "/register3",
+      search: "phone=ph&password=pwd&captcha=this.state.valueYzm",
+    });
+    // this.props.location.search.splice("=")[0];
+    req("/captcha/verify?phone=" + ph + "&captcha" + "=" + this.state.valueYzm)
+      .then(res => {
+        console.log(11);
+        console.log(res);
+        this.props.history.push({
+          pathname: "/register3",
+          search: `${"phone=" +
+            ph +
+            "&password=" +
+            pwd +
+            "&captcha=" +
+            this.state.valueYzm}`,
+        });
+      })
+      .catch(err => err);
+  }
   render() {
     return (
       <Re>
