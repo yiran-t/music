@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Head from "../components/Head";
 import Footer from "../components/Footer";
 import {
@@ -13,8 +13,8 @@ import {
   Register2,
   Register3,
 } from "../views";
-// import { Privatefm, EverydaySong, Hotsong } from "../components";
 import RecommendSongListDetail from "../components/recommendSongListDetail";
+import Detail from "../components/hotSongs/Detail";
 export class App extends Component {
   render() {
     return (
@@ -22,7 +22,6 @@ export class App extends Component {
         <Head />
         <Switch>
           <Route path='/foundmusic' component={FoundMusic} />
-          {/* <Redirect exact path='/' to='/foundmusic' /> */}
           <Route path='/mymusic' component={MyMusic} />
           <Route path='/friend' component={Friend} />
           <Route path='/account' component={Account} />
@@ -33,6 +32,7 @@ export class App extends Component {
           <Route path='/register2' component={Register2} />
           <Route path='/register3' component={Register3} />
           <Route path='/songListDetail' component={RecommendSongListDetail} />
+          <Route path='/hotSongsDetail' component={Detail} />
           <Route component={FoundMusic} />
         </Switch>
         <Footer />

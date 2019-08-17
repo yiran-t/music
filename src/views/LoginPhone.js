@@ -20,10 +20,16 @@ export default class LoginPhone extends Component {
         this.state.password
     )
       .then(res => {
-        console.log(11);
+        console.log("success");
         console.log(res);
         this.props.history.push("/foundmusic");
       })
+      // .then(res => {
+      //   console.log(res);
+      //   req("/login/status").then(resolve => {
+      //     console.log(resolve);
+      //   });
+      // })
       .catch(err => err);
   }
   onInputChange(e) {

@@ -8,6 +8,7 @@ import Hotsong from "./Hotsong";
 import EverydaySong from "./EverydaySong";
 import Privatefm from "./Privatefm";
 import RecommendSongListDetail from "./recommendSongListDetail";
+import HotSongsDetail from "./hotSongs/Detail";
 
 export {
   Style,
@@ -20,4 +21,5 @@ export {
   EverydaySong,
   Privatefm,
   RecommendSongListDetail,
+  HotSongsDetail,
 };
